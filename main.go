@@ -1,15 +1,15 @@
 package main
 
 import (
-  "fmt"
-  "log"
-  "flag"
-  "github.com/tarm/serial"
+	"fmt"
+	"log"
+	"flag"
+	"github.com/tarm/serial"
 )
 
 var (
-  targetComPort string
-  baudRate int
+	targetComPort string
+	baudRate int
 )
 
 // init flags
@@ -19,25 +19,25 @@ func init() {
 }
 
 func main() {
-  config := &serial.Config{
-    Name: targetComPort,
-    Baud: baudRate,
-    ReadTimeout: 1,
-    Size 8
-  }
-  
-  stream, err := serial.OpenPort(config)
-  if err != nil {
-    log.Fatal(err)
-  }
-  buf := make([]byte, 1024)
+	config := &serial.Config{
+	Name: targetComPort,
+	Baud: baudRate,
+	ReadTimeout: 1,
+	Size: 8
+	}
 
-  for {
-    n, err := stream.Read(buf)
-    if err != nil {
-            log.Fatal(err)
-    }
-    s := string(buf[:n])
-    fmt.Println(s) // Replace with multi logger (stdout & text file)
-  }
+	stream, err := serial.OpenPort(config)
+	if err != nil {
+		log.Fatal(err)
+	}
+	buf := make([]byte, 1024)
+
+	for {
+		n, err := stream.Read(buf)
+		if err != nil {
+			log.Fatal(err)
+		}
+		s := string(buf[:n])
+		fmt.Println(s) // Replace with multi logger (stdout & text file)
+	}
 }
