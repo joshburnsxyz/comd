@@ -1,68 +1,34 @@
 
-# Project Title
+# COMD
 
-A brief description of what this project does and who it's for
+A command line tool for logging serial/com port traffic on linux. 
 
 
 ## Features
 
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
-
+- Logs to a file
+- configurable baud rate
+- small footprint
   
-## Usage/Examples
+## Usage
 
-```javascript
-import Component from 'my-project'
+Below shows the available flags (You will mainly want to focus on `-target`, Unless you
+have a very specific use-case and/or know what you're doing `-baud` default of 9600 should
+work almost across universally).
 
-function App() {
-  return <Component />
-}
+```
+$ comd [-target=/dev/ttyAMA0] [-logfile=./comd.log] [-baud=9600]
 ```
 
-  
-### API Reference
-
-#### Get all items
-
-```http
-  GET /api/items
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
-
-#### Get item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
-
-#### add(num1, num2)
-
-Takes two numbers and returns the sum.
-
-  
 ## Installation 
 
-Install my-project with npm
-
+Build the binary with go build
 ```bash 
-  npm install my-project
-  cd my-project
+  git clone https://github.com/joshburnsxyz/comd
+  go mod tidy
+  go build
+  ./comd
 ```
-    
-## Documentation
-
-[Documentation](https://linktodocumentation)
-
   
 ## License
 
